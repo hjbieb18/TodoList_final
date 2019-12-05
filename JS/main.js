@@ -24,6 +24,9 @@ new Vue ({
         },
         increaseCounter: function () {
             this.count = this.count+1;
+        },
+        removeTodo: function (index) {
+            this.todos.splice(index, 1);
         }
     }
 });
