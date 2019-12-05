@@ -5,6 +5,20 @@
         <title>Vue Js Todo App</title>
 </head>
 <body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <input type="text" v-model="message">
+        <h2>Todos</h2>
+        <ul v-show="showTodos">
+            <li v-for="todo in todos" >
+                {{ todo.title }}
+            </li>
+        </ul>
+        <p>
+            Showing Todos or not: {{ showTodos }}
+            <input type="checkbox" v-model="showTodos">
+        </p>
+    </div>
     <script src="js/vue.js" charset="UTF-8"></script>
     <script src="js/main.js" charset="UTF-8"></script>
     
