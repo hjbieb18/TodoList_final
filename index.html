@@ -6,10 +6,8 @@
 </head>
 <body>
     <div id="app">
-        <p>{{ message }}</p>
-        <input type="text" v-model="message">
         <h2>Todos</h2>
-        <ul v-show="showTodos">
+        <ul v-if="showTodos">
             <li v-for="todo in todos" >
                 {{ todo.title }}
             </li>
@@ -20,6 +18,13 @@
         <p>
             Showing Todos or not: {{ showTodos }}
             <input type="checkbox" v-model="showTodos">
+        </p>
+        <p>
+            <input type="text" v-model="todoText" v-on:keyup.esc="clearTodo" v-on:keyup.enter="createTodo">
+        </p>
+        <p>
+            Count = {{ count }}
+            <button type="button" v-on:click="increaseCounter">Increase count</button>
         </p>
     </div>
     <script src="js/vue.js" charset="UTF-8"></script>
