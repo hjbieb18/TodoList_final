@@ -14,6 +14,9 @@
                 {{ todo.title }}
             </li>
         </ul>
+        <p v-else >
+            No Todos for you today
+        </p>
         <p>
             Showing Todos or not: {{ showTodos }}
             <input type="checkbox" v-model="showTodos">
