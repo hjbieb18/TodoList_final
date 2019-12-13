@@ -35,7 +35,9 @@
                 <li v-for="todo in todos" >
                     <todo-component v-bind:todo="todo"></todo-component>
                     <span>{{ todo.dateCreated }}</span>
-                    <input type="checkbox" v-model="todo.done">
+                    <input type="checkbox" v-on:click="check(todo)" v-bind:checked="todo.done">
+                    <del v-if="todo.done">{{ todo.todoText }}</del>
+                    <span v-else>{{ todo.todoText }}</span>
                     <button type="button" v-on:click="removeTodo">X</button>
                     
                 </li>

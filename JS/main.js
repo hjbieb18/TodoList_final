@@ -40,6 +40,10 @@ new Vue ({
                 this.todoText= '';
             }
         },
+        check(todo){
+            todo.done = !todo.done
+
+        },
         clearTodo: function() {
             this.todoText = '';
         },
