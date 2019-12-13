@@ -1,6 +1,7 @@
 var TodoComponent = Vue.extend({
     data: function (){
         return {
+            done: false,
             inEditMode: false
         }
     },
@@ -32,9 +33,11 @@ new Vue ({
     },
     methods: {
         createTodo: function() {
+            const date = new Date();
+            const todoDate = date.toLocaleString();
             var todoText = this.todoText.trim();
             if(todoText){
-                this.todos.push({ title: todoText});
+                this.todos.push({ title: todoText, done:false, dateCreated: todoDate});
                 this.todoText= '';
             }
         },

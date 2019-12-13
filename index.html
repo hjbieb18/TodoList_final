@@ -9,7 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
-    
+    .done {
+        text-decoration: line-through;
+    }
 
 </style>
 </head>
@@ -31,7 +33,9 @@
 
             <ul>
                 <li v-for="todo in todos" >
-                    <todo-component v-bind:todo="todo"></todo-component><button type="button" v-on:click="removeTodo">X</button>
+                    <todo-component v-bind:todo="todo"></todo-component>
+                    <span :class="{ done: todo.done}">{{ todo.dateCreated }}</span>
+                    <button type="button" v-on:click="removeTodo">X</button>
                 </li>
             </ul>
                 <input type="checkbox" v-model="showTodos">
