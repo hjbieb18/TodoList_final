@@ -1,7 +1,6 @@
 var TodoComponent = Vue.extend({
     data: function (){
         return {
-            done: false,
             inEditMode: false
         }
     },
@@ -27,7 +26,7 @@ new Vue ({
         title: this.todoText,
         todoText: '',
         todos: [],
-        showTodos: true,
+        doneTodo: false,
         count: 1
 
     },

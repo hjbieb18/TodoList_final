@@ -34,11 +34,12 @@
             <ul>
                 <li v-for="todo in todos" >
                     <todo-component v-bind:todo="todo"></todo-component>
-                    <span :class="{ done: todo.done}">{{ todo.dateCreated }}</span>
+                    <span>{{ todo.dateCreated }}</span>
+                    <input type="checkbox" v-model="todo.done">
                     <button type="button" v-on:click="removeTodo">X</button>
+                    
                 </li>
             </ul>
-                <input type="checkbox" v-model="showTodos">
             </p>
             
         </main>
