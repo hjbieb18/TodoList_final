@@ -23,9 +23,12 @@ Vue.component('todo-component', TodoComponent);
 new Vue ({
     el: '#app',
     data: {
-        title: this.todoText,
+        message: 'Hello',
         todoText: '',
-        todos: [],
+        todos: [
+            { title: 'Todo 1' },
+            { title: 'Todo 2'}
+        ],
         showTodos: true,
         count: 1
 
