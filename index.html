@@ -38,7 +38,7 @@
                     <input type="checkbox" v-on:click="check(todo)" v-bind:checked="todo.done">
                     <del v-if="todo.done">{{ todo.todoText }}</del>
                     <span v-else>{{ todo.todoText }}</span>
-                    <button type="button" v-on:click="removeTodo">X</button>
+                    <button type="button" v-on:click="removeTodo">Delete</button>
                     
                 </li>
             </ul>

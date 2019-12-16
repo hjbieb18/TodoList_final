@@ -47,11 +47,8 @@ new Vue ({
         clearTodo: function() {
             this.todoText = '';
         },
-        increaseCounter: function () {
-            this.count = this.count+1;
-        },
         removeTodo: function (index) {
-            this.todos.splice(index, 1);
+            this.todos.splice(index,1);
         }
     }
 });
