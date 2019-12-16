@@ -30,20 +30,19 @@
                 <input v-model="todoText" type="text" name="NewTodo" id="Create" value="">
                 <button type="submit" class="btn btn-success" name="button">Add Todo</button>
             </form>
-
-            <ul>
-                <li v-for="todo in todos" >
-                    <todo-component v-bind:todo="todo"></todo-component>
-                    <span>{{ todo.dateCreated }}</span>
-                    <input type="checkbox" v-on:click="check(todo)" v-bind:checked="todo.done">
-                    <del v-if="todo.done">{{ todo.todoText }}</del>
-                    <span v-else>{{ todo.todoText }}</span>
-                    <button type="button" v-on:click="removeTodo">Delete</button>
-                    
-                </li>
-            </ul>
-            </p>
             
+            <section>
+                <ul>
+                    <li v-for="todo in todos" >
+                        <todo-component v-bind:todo="todo"></todo-component>
+                        <span>{{ todo.dateCreated }}</span>
+                        <input type="checkbox" v-model="todo.done">
+                        <del v-if="todo.done">{{ todo.todoText }}</del>
+                        <span v-else>{{ todo.todoText }}</span>
+                        <button type="button" v-on:click="removeTodo">Delete</button>     
+                    </li>
+                </ul>
+            </section>
         </main>
             
             

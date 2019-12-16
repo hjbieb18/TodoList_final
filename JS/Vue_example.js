@@ -23,32 +23,27 @@ Vue.component('todo-component', TodoComponent);
 new Vue ({
     el: '#app',
     data: {
-        message: 'Hello',
+        title: this.todoText,
         todoText: '',
-        todos: [
-            { title: 'Todo 1' },
-            { title: 'Todo 2'}
-        ],
-        showTodos: true,
-        count: 1
+        todos: [],
+        
 
     },
     methods: {
         createTodo: function() {
+            const date = new Date();
+            const todoDate = date.toLocaleString();
             var todoText = this.todoText.trim();
             if(todoText){
-                this.todos.push({ title: todoText});
+                this.todos.push({ title: todoText, dateCreated: todoDate});
                 this.todoText= '';
             }
         },
         clearTodo: function() {
             this.todoText = '';
         },
-        increaseCounter: function () {
-            this.count = this.count+1;
-        },
         removeTodo: function (index) {
-            this.todos.splice(index, 1);
+            this.todos.splice(index,1);
         }
     }
 });

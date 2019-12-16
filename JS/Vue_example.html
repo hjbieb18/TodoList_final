@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Vue Js Todo App</title>
+<head>
+    <title>Vue Js Todo App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+    .done {
+        text-decoration: line-through;
+    }
+
+</style>
 </head>
-<body>
-    <div id="app">
-        <h2>Todos</h2>
-        <ul v-if="showTodos">
-            <li v-for="todo in todos" >
-                <todo-component v-bind:todo="todo"></todo-component><button type="button" v-on:click="removeTodo($index)">X</button>
-            </li>
-        </ul>
-        <p v-else >
-            No Todos for you today
-        </p>
-        <p>
-            Showing Todos or not: {{ showTodos }}
-            <input type="checkbox" v-model="showTodos">
-        </p>
-        <p>
-            <input type="text" v-model="todoText" v-on:keyup.esc="clearTodo" v-on:keyup.enter="createTodo">
-        </p>
-        <p>
-            Count = {{ count }}
-            <button type="button" v-on:click="increaseCounter">Increase count</button>
-        </p>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/vue.js" charset="UTF-8"></script>
-    <script src="js/main.js" charset="UTF-8"></script>
-    
+<body style="background-color: green">
+
+    <div class="container "id="app">
+        <div class="jumbotron">
+            <h1><center>Weekly ToDo List</center></h1>
+        </div>
+        <h2><center>Add Todo Below</center></h2>
+
+        <main>
+            <h3>{{ title }}</h3>
+            <form @submit.prevent = "createTodo">
+                <label for= "NewTodo">Add To The Weekly ToDo:</label>
+                <input v-model="todoText" type="text" name="NewTodo" id="Create" value="">
+                <button type="submit" class="btn btn-success" name="button">Add Todo</button>
+            </form>
+
+            <ul>
+                <li v-for="todo in todos" >
+                    <todo-component v-bind:todo="todo"></todo-component>
+                    <span>{{ todo.dateCreated }}</span>
+                    <input type="checkbox" v-model="todo.done">
+                    <del v-if="todo.done">{{ todo.todoText }}</del>
+                    <span v-else>{{ todo.todoText }}</span>
+                    <button type="button" v-on:click="removeTodo">Delete</button>
+                    
+                </li>
+            </ul>
+            </p>
+            
+        </main>
+            
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="js/vue.js" charset="UTF-8"></script>
+        <script src="js/Vue_example.js" charset="UTF-8"></script>
+        
 </body>
-
-
 </html>

@@ -4,16 +4,17 @@ var TodoComponent = Vue.extend({
             inEditMode: false
         }
     },
-    props: ['todo'],
-    template: '<div><span v-on:click="clicked" v-show="!inEditMode">{{ todo.title }}</span><input v-on:keyup.enter="saved" v-model="todo.title" v-show="inEditMode" /> </div>',
-    methods: {
-        clicked: function(){
-            this.inEditMode = true;
+    props:  ['todo'],
+    template: '<div><span v-on:click="done" v-show="!inEditMode">{{ todo.title }}</span><input v-on:keyup.enter="saved" v-model="todo.title" v-show="inEditMode" /> </div>',
+    methods:{
+        done: function(){
+            this.inEditMode  = true;
         },
         saved: function() {
             this.inEditMode = false;
         }
-    }
+    } 
+
 });
 
 Vue.component('todo-component', TodoComponent);
@@ -26,8 +27,7 @@ new Vue ({
         title: this.todoText,
         todoText: '',
         todos: [],
-        doneTodo: false,
-        count: 1
+        
 
     },
     methods: {
@@ -36,13 +36,9 @@ new Vue ({
             const todoDate = date.toLocaleString();
             var todoText = this.todoText.trim();
             if(todoText){
-                this.todos.push({ title: todoText, done:false, dateCreated: todoDate});
+                this.todos.push({ title: todoText, dateCreated: todoDate});
                 this.todoText= '';
             }
-        },
-        check(todo){
-            todo.done = !todo.done
-
         },
         clearTodo: function() {
             this.todoText = '';
