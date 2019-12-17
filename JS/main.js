@@ -35,6 +35,9 @@ var todoApp = new Vue({
         },
         completeTask: function(list){
             list.isComplete = !list.isComplete;
+        },
+        deleteTask(id){
+            this.lists = this.lists.filter(todo => todo.id != id)
         }
     }
 })
