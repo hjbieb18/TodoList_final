@@ -25,7 +25,7 @@
         <h2><center>Add to The Weekly Todo:</center></h2>
         
 
-        <form name="todo-form" method="post" action="" v-on:submit.prevent="addTask"><center>Begin Making List ==>
+        <form name="todo-form" method="post" action="" v-on:submit.prevent="addTask"><center>
             <input placeholder="New Item" name="add-todo" type="text" v-model="addTodoInput" v-bind:class="{error: completed}"/>
 
             <button type="submit">Add</button></center>
@@ -39,10 +39,10 @@
                     contenteditable="true"
                     v-on:keydown.enter="updateTask($event, list)"
                     v-on:blur="updateTask($event, list)"
-                    v-bind:class="{completed: list.isComplete}"> <span style= "color: rgb(70, 61, 199); font-size: larger; ">{{list.title}}</span>
+                    v-bind:class="{completed: list.isComplete}"> <span style= "color: rgb(70, 61, 199); font-size: xx-large; ">{{list.title}}</span>
                 
                     <button v-on:click="deleteTask(list.id)">Delete</button>
-                    <span>Added: {{ list.dateCreated }} </span>
+                    <span style="font-size:xx-small;">Added: {{ list.dateCreated }} </span>
                 </li>
             </ul>
         
