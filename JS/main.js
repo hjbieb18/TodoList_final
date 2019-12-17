@@ -1,8 +1,7 @@
-
+// Add Date
 var todoApp = new Vue({
     el: '#todoApp',
     data: {
-      message: 'Welcome to Todo App',
       addTodoInput: '',
       lists: [],
       completed: false   
