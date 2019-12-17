@@ -1,50 +1,40 @@
-var TodoComponent = Vue.extend({
-    data: function (){
-        return {
-            inEditMode: false
-        }
-    },
-    props:  ['todo'],
-    template: '<div><span v-on:click="done" v-show="!inEditMode">{{ todo.title }}</span><input v-on:keyup.enter="saved" v-model="todo.title" v-show="inEditMode" /> </div>',
-    methods:{
-        done: function(){
-            this.inEditMode  = true;
-        },
-        saved: function() {
-            this.inEditMode = false;
-        }
-    } 
 
-});
-
-Vue.component('todo-component', TodoComponent);
-
-
-
-new Vue ({
-    el: '#app',
+var todoApp = new Vue({
+    el: '#todoApp',
     data: {
-        title: this.todoText,
-        todoText: '',
-        todos: [],
-        
-
+      message: 'Welcome to Todo App',
+      addTodoInput: '',
+      lists: [],
+      completed: false   
     },
     methods: {
-        createTodo: function() {
+        addTask: function() {
             const date = new Date();
             const todoDate = date.toLocaleString();
-            var todoText = this.todoText.trim();
-            if(todoText){
-                this.todos.push({ title: todoText, dateCreated: todoDate});
-                this.todoText= '';
+            if(!this.addTodoInput){
+                this.completed= true;
+                this.dateCreated= todoDate
+                return;
             }
+            this.completed = false;
+
+            this.lists.push({
+                id: this.lists.length+1,
+                title: this.addTodoInput,
+                isComplete:false,
+                dateCreated: todoDate
+
+            });
+
+            this.addTodoInput= '';
         },
-        clearTodo: function() {
-            this.todoText = '';
+        updateTask: function(e, list){
+            e.preventDefault();
+            list.title = e.target.innerText;
+            e.target.blur();
         },
-        removeTodo: function (index) {
-            this.todos.splice(index,1);
+        completeTask: function(list){
+            list.isComplete = !list.isComplete;
         }
     }
-});
+})
